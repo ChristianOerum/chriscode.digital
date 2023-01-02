@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<h1>Min helt egen HTML baserede hjemmeside!</h1>
-<h2>Shit det fe' mand, det sgu ikke helt dum</h2>
 <body>
-    
+ 
+    <button onclick="pipedriveCall('persons')">PD personer</button>
+    <button onclick="pipedriveCall('organizations')">PD skoler</button>
+    <button onclick="pipedriveCall('activities')">PD activities</button>
+    <button onclick="economicCall()">Economic</button>
+    <script type="text/javascript" src="economic_fetch.js"></script>
+    <script type="text/javascript" src="pipedrive_fetch.js"></script>
 </body>
 </html>
