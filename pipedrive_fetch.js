@@ -11,6 +11,7 @@ async function pipedriveCall(endpoint) {
     let CLV_count = 0
     let Opsalg_MRR = 0
     let LHV = 0
+    let google_sheetData = 0
 
 
     while (tempArr.length == start) {
@@ -45,14 +46,28 @@ async function pipedriveCall(endpoint) {
             }
 
         } 
+
+        //google sheet data.
+        await fetch("https://docs.google.com/spreadsheets/d/1-HhNg6BcIrBGFkqS0sgMYrX-6BI_G6tutCURuajqEjQ/edit?usp=sharing")
+            .then(response => response.text())
+            .then(data => {
+                const rows = data.split('\n').slice(1);
+                const jsonData = rows.map(row => {
+                const temp_strToArr = (rows[2].split('"'))[0]
+                google_sheetData = temp_strToArr.split(",")
+            })
+        })
+
         console.log("MRR= " + MRR)
         console.log("ARR= " + (MRR*12))
         console.log("CLV= " + (CLV/CLV_count))
         console.log("Opsalg_MRR= " + Opsalg_MRR)
         console.log("Lukkede handler værdi= " + LHV)
-        console.log("CAC?")
-        console.log("CACPayback?")
-        console.log("CAC/CLV?")
+        console.log("CAC= " + google_sheetData[0])
+        console.log("CACPayback= " + google_sheetData[1])
+        console.log("CAC/CLV= " + ((CLV/CLV_count)/Number(google_sheetData[0])))
+
+
     }
 
     
